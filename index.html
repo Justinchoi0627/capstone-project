@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exhibition AR - 4 Marker Experience</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
+    <script src="./js/scene-config.js" defer></script>
+  </head>
+  <body>
+    <div id="instructions" class="instructions">
+      <h1>AR Exhibition</h1>
+      <p>Allow camera access, then point at one of the 4 frame markers.</p>
+      <button id="dismiss-instructions" type="button">Start</button>
+    </div>
+
+    <a-scene
+      embedded
+      vr-mode-ui="enabled: false"
+      renderer="logarithmicDepthBuffer: true; antialias: true;"
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+    >
+      <a-assets>
+        <img id="frame-1-texture" src="./assets/frame-1/overlay.svg" alt="Frame 1 texture" />
+        <img id="frame-2-texture" src="./assets/frame-2/overlay.svg" alt="Frame 2 texture" />
+        <img id="frame-3-texture" src="./assets/frame-3/overlay.svg" alt="Frame 3 texture" />
+        <img id="frame-4-texture" src="./assets/frame-4/overlay.svg" alt="Frame 4 texture" />
+      </a-assets>
+
+      <a-light type="ambient" intensity="0.9"></a-light>
+      <a-light type="directional" position="1 2 1" intensity="0.7"></a-light>
+
+      <a-marker id="marker-frame-1" preset="kanji">
+        <a-entity position="0 0.35 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 9000; easing: linear;">
+          <a-sphere radius="0.18" color="#84dccf"></a-sphere>
+          <a-ring radius-inner="0.22" radius-outer="0.26" color="#2b2d42" rotation="90 0 0"></a-ring>
+          <a-plane src="#frame-1-texture" position="0 -0.35 0" width="0.8" height="0.45"></a-plane>
+        </a-entity>
+      </a-marker>
+
+      <a-marker id="marker-frame-2" type="barcode" value="0">
+        <a-entity position="0 0.3 0">
+          <a-box
+            depth="0.2"
+            height="0.2"
+            width="0.2"
+            color="#ffbf69"
+            animation="property: rotation; to: 360 360 0; loop: true; dur: 6500; easing: linear;"
+          ></a-box>
+          <a-plane src="#frame-2-texture" position="0 -0.35 0" width="0.8" height="0.45"></a-plane>
+        </a-entity>
+      </a-marker>
+
+      <a-marker id="marker-frame-3" type="barcode" value="1">
+        <a-entity position="0 0.3 0">
+          <a-cone
+            radius-bottom="0.18"
+            radius-top="0.04"
+            height="0.4"
+            color="#e5989b"
+            animation="property: rotation; to: 0 360 0; loop: true; dur: 7000; easing: linear;"
+          ></a-cone>
+          <a-plane src="#frame-3-texture" position="0 -0.35 0" width="0.8" height="0.45"></a-plane>
+        </a-entity>
+      </a-marker>
+
+      <a-marker id="marker-frame-4" type="barcode" value="2">
+        <a-entity position="0 0.3 0">
+          <a-octahedron
+            radius="0.18"
+            color="#90be6d"
+            animation="property: rotation; to: 360 0 360; loop: true; dur: 8000; easing: linear;"
+          ></a-octahedron>
+          <a-plane src="#frame-4-texture" position="0 -0.35 0" width="0.8" height="0.45"></a-plane>
+        </a-entity>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>

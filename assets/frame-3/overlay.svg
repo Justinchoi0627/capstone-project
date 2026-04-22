@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="576" viewBox="0 0 1024 576">
+  <rect width="1024" height="576" fill="#e5989b" />
+  <polygon points="512,110 760,460 264,460" fill="#3d405b" />
+  <text x="512" y="315" text-anchor="middle" font-size="64" fill="#ffffff" font-family="Arial, sans-serif">F3 AR</text>
+</svg>
