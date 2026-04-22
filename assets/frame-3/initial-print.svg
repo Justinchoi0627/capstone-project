@@ -3,4 +3,7 @@
   <rect x="80" y="80" width="1040" height="1640" fill="none" stroke="#e5989b" stroke-width="8" />
   <text x="600" y="860" text-anchor="middle" font-size="96" fill="#e5989b" font-family="Arial, sans-serif">FRAME 3</text>
   <text x="600" y="980" text-anchor="middle" font-size="42" fill="#f8f9fa" font-family="Arial, sans-serif">Initial print placeholder</text>
+  <rect x="430" y="1180" width="340" height="430" rx="16" fill="#ffffff" opacity="0.96" />
+  <image href="../../markers/print-markers/barcode-1.svg" x="470" y="1220" width="260" height="260" />
+  <text x="600" y="1540" text-anchor="middle" font-size="32" fill="#3d405b" font-family="Arial, sans-serif">Marker: barcode 1</text>
 </svg>
