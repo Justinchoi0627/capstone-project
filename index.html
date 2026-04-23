@@ -8,7 +8,8 @@
     />
     <title>Exhibition AR - 4 Marker Experience</title>
     <link rel="stylesheet" href="styles.css" />
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <!-- 1.5.x + AR.js 3.4.x can leave iOS with an opaque WebGL clear over the webcam; 1.4.2 is the stable combo for AR.js marker mode. -->
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
     <script src="./js/scene-config.js" defer></script>
   </head>

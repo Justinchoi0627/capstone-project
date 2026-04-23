@@ -40,6 +40,14 @@ a-scene {
   touch-action: none;
   position: relative;
   z-index: 1;
+  background: transparent !important;
+}
+
+/* iOS: avoid an opaque default canvas backing color hiding the video layer */
+.a-canvas {
+  background-color: transparent !important;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 .version-badge {
