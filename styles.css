@@ -9,13 +9,37 @@ body {
   height: 100%;
   overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
-  /* Visible around edges before AR composite; camera shows through WebGL with alpha: true */
-  background: #0d0d0d;
+  /*
+    AR.js gives #arjs-video z-index: -2. An opaque body background paints on top of that
+    layer in the root stacking context, so the feed stays invisible (black page).
+  */
+  background: transparent;
   touch-action: none;
+}
+
+/*
+  AR.js sets position absolute + z-index -2; lift above root background and fill the
+  viewport like the native camera preview (object-fit: cover).
+*/
+#arjs-video {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover;
+  z-index: 0 !important;
+  pointer-events: none;
 }
 
 a-scene {
   touch-action: none;
+  position: relative;
+  z-index: 1;
 }
 
 .version-badge {
