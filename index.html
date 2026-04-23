@@ -32,7 +32,7 @@
       arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
     >
       <a-assets>
-        <img id="frame-1-texture" src="./assets/frame-1/overlay.svg" alt="Frame 1 texture" />
+        <a-asset-item id="frame-1-model" src="./assets/frame-1/1.glb"></a-asset-item>
         <img id="frame-2-texture" src="./assets/frame-2/overlay.svg" alt="Frame 2 texture" />
         <img id="frame-3-texture" src="./assets/frame-3/overlay.svg" alt="Frame 3 texture" />
         <img id="frame-4-texture" src="./assets/frame-4/overlay.svg" alt="Frame 4 texture" />
@@ -42,10 +42,8 @@
       <a-light type="directional" position="1 2 1" intensity="0.7"></a-light>
 
       <a-marker id="marker-frame-1" preset="kanji">
-        <a-entity position="0 0.35 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 9000; easing: linear;">
-          <a-sphere radius="0.18" color="#84dccf"></a-sphere>
-          <a-ring radius-inner="0.22" radius-outer="0.26" color="#2b2d42" rotation="90 0 0"></a-ring>
-          <a-plane src="#frame-1-texture" position="0 -0.35 0" width="0.8" height="0.45"></a-plane>
+        <a-entity position="0 0 0" scale="0.25 0.25 0.25">
+          <a-gltf-model src="#frame-1-model" position="0 0 0"></a-gltf-model>
         </a-entity>
       </a-marker>
 
