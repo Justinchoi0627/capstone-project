@@ -5,8 +5,10 @@ Static AR.js experience for 4 physical frames. Visitors scan one QR code, open o
 ## Project Structure
 
 - `index.html`: single AR entry page (A-Frame + AR.js).
-- `js/scene-config.js`: marker mapping and marker found/lost logs.
+- `js/scene-config.js`: marker mapping, version label, marker found/lost logs.
 - `styles.css`: instruction overlay styling.
+- `VERSION`: single-line fallback label (e.g. `v0.1.0`) when the Pages build has no matching `v*` tag yet.
+- `version.txt`: plain text the UI fetches to show the release label; the Actions workflow overwrites this in the published artifact from the latest `v*` tag when possible.
 - `markers/`: marker documentation and future `.patt` files (if needed).
 - `assets/frame-1/` ... `assets/frame-4/`: each frame keeps its own initial print + AR assets.
 
@@ -45,7 +47,7 @@ GitHub serves the site over **HTTPS** with a normal certificate, which satisfies
 
 ### Option A — GitHub Actions (recommended)
 
-This repo includes a workflow that publishes only the static site files (`index.html`, `styles.css`, `js/`, `assets/`, `markers/`, `.nojekyll`).
+This repo includes a workflow that publishes only the static site files (`index.html`, `styles.css`, `js/`, `assets/`, `markers/`, `.nojekyll`) and writes `version.txt` from the latest reachable **`v*`** git tag (falling back to the first line of `VERSION`).
 
 1. Push the repo to GitHub (default branch `main`).
 2. **Repository → Settings → Pages**
@@ -65,6 +67,13 @@ The first run may need you to approve workflow permissions once if GitHub prompt
    - `https://<your-username>.github.io/<your-repo>/`
 
 The `.nojekyll` file at the repo root disables Jekyll so all static paths are served as-is.
+
+## Releasing
+
+1. Commit your changes and push `main`.
+2. Create an annotated or lightweight tag, e.g. `git tag v0.2.0` then `git push origin v0.2.0` (and `git push origin main` if needed).
+3. For **branch-based Pages**, also set the first line of `VERSION` and `version.txt` to match so the badge stays correct.
+4. After the Pages deploy finishes, reload the site; the top-left **Version** label fetches `version.txt` with `cache: no-store` so you can confirm the new build.
 
 ## Single QR Code Setup
 

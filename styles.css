@@ -18,6 +18,32 @@ a-scene {
   touch-action: none;
 }
 
+.version-badge {
+  position: fixed;
+  z-index: 20;
+  top: max(0.45rem, env(safe-area-inset-top, 0px));
+  left: max(0.45rem, env(safe-area-inset-left, 0px));
+  padding: 0.28rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  background: rgba(0, 0, 0, 0.72);
+  color: #e9ecef;
+  pointer-events: none;
+  user-select: none;
+}
+
+.version-badge__label {
+  opacity: 0.75;
+  margin-right: 0.25rem;
+}
+
+.version-badge__value {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
 .instructions {
   position: fixed;
   z-index: 10;

@@ -5,6 +5,19 @@ const markerMap = [
   { frameId: "frame-4", markerType: "barcode", markerValue: "2" },
 ];
 
+const versionBadgeValue = document.querySelector(".version-badge__value");
+if (versionBadgeValue) {
+  const versionUrl = new URL("version.txt", window.location.href);
+  fetch(versionUrl.href, { cache: "no-store" })
+    .then((res) => (res.ok ? res.text() : Promise.reject()))
+    .then((text) => {
+      versionBadgeValue.textContent = text.trim() || "—";
+    })
+    .catch(() => {
+      versionBadgeValue.textContent = "dev";
+    });
+}
+
 const dismissButton = document.getElementById("dismiss-instructions");
 const instructions = document.getElementById("instructions");
 
