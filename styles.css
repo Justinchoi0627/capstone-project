@@ -9,7 +9,13 @@ body {
   height: 100%;
   overflow: hidden;
   font-family: Arial, Helvetica, sans-serif;
+  /* Visible around edges before AR composite; camera shows through WebGL with alpha: true */
   background: #0d0d0d;
+  touch-action: none;
+}
+
+a-scene {
+  touch-action: none;
 }
 
 .instructions {
