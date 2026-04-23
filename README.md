@@ -31,14 +31,40 @@ Then open:
 
 - `http://localhost:8080`
 
+### HTTPS (phones, secure context)
+
+Mobile browsers treat many device APIs as [secure contexts](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts) only: **HTTPS** or `http://localhost` on the same device.
+
+**iPhones and self-signed TLS:** Safari often still blocks or degrades access even after you tap through warnings, so **use GitHub Pages (real HTTPS)** for phone testing and for the exhibition QR URL—not a self-signed dev server.
+
+For laptop-only testing with a self-signed cert, see `serve_https.py` and `./scripts/gen_dev_cert.sh` in the repo.
+
 ## GitHub Pages Deployment
 
-1. Push this repo to GitHub.
-2. In repo settings, enable GitHub Pages:
-   - Source: `Deploy from a branch`
-   - Branch: `main` (root)
-3. Wait for deployment, then copy your site URL:
+GitHub serves the site over **HTTPS** with a normal certificate, which satisfies iOS and camera access.
+
+### Option A — GitHub Actions (recommended)
+
+This repo includes a workflow that publishes only the static site files (`index.html`, `styles.css`, `js/`, `assets/`, `markers/`, `.nojekyll`).
+
+1. Push the repo to GitHub (default branch `main`).
+2. **Repository → Settings → Pages**
+   - **Build and deployment → Source:** **GitHub Actions** (not “Deploy from a branch”).
+3. Open **Actions**, confirm the **Deploy GitHub Pages** workflow run succeeded.
+4. Your site URL (Settings → Pages, or the workflow summary):
    - `https://<your-username>.github.io/<your-repo>/`
+
+The first run may need you to approve workflow permissions once if GitHub prompts you.
+
+### Option B — Deploy from branch
+
+1. Push this repo to GitHub.
+2. **Settings → Pages → Source:** **Deploy from a branch**
+   - Branch: `main`, folder **/** (root)
+3. Wait for the deployment, then open:
+   - `https://<your-username>.github.io/<your-repo>/`
+
+The `.nojekyll` file at the repo root disables Jekyll so all static paths are served as-is.
 
 ## Single QR Code Setup
 
