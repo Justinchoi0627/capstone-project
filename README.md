@@ -12,6 +12,56 @@ Static AR.js experience for 4 physical frames. Visitors scan one QR code, open o
 - `markers/`: marker documentation and future `.patt` files (if needed).
 - `assets/frame-1/` ... `assets/frame-4/`: each frame keeps its own initial print + AR assets.
 
+## Git and GitHub
+
+**Get a copy of the project (first time only)**
+
+1. Install [Git](https://git-scm.com/downloads) on your computer.
+2. On GitHub, open this repository and click the green **Code** button.
+3. Copy the **HTTPS** URL (looks like `https://github.com/<user>/<repo>.git`).
+4. In a terminal, go to the folder where you keep projects, then run (paste your URL):
+
+   ```bash
+   git clone https://github.com/<user>/<repo>.git
+   cd <repo>
+   ```
+
+**Save your edits and send them to GitHub**
+
+1. Open a terminal in the project folder (`cd` into the repo if needed).
+2. See what changed:
+
+   ```bash
+   git status
+   ```
+
+3. Stage the files you want to include (`.` means “everything that changed”):
+
+   ```bash
+   git add .
+   ```
+
+4. Commit with a short message describing the change:
+
+   ```bash
+   git commit -m "Describe your change in plain language"
+   ```
+
+5. Upload commits to GitHub:
+
+   ```bash
+   git push origin main
+   ```
+
+If GitHub says the branch is behind, pull others’ work first, then push again:
+
+```bash
+git pull origin main
+git push origin main
+```
+
+If you prefer a graphical app, [GitHub Desktop](https://desktop.github.com/) can clone, commit, and push without using the terminal.
+
 ## Marker Mapping (Initial)
 
 The current setup uses AR.js built-in markers compatible with the Stemkoski starter examples:
